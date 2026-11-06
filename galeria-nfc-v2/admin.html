@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Painel • Galerias NFC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .admin input[type=email], .admin input[type=password] { flex: 1; min-width: 180px; padding: 11px 12px; border: 1px solid #cfd6cf; border-radius: 12px; font: inherit; }
+    .admin .stack { display: flex; flex-direction: column; gap: 10px; }
+    .admin .err { color: #8a2d2d; font-size: .9rem; min-height: 1.2em; }
+  </style>
+</head>
+<body style="background:var(--creme)">
+  <div class="admin">
+    <header>
+      <h1>Galerias NFC</h1>
+      <button class="btn-light" id="logout" hidden>Sair</button>
+    </header>
+
+    <!-- Login -->
+    <section class="card" id="loginCard" hidden>
+      <h2>Entrar</h2>
+      <form class="stack" id="loginForm">
+        <input type="email" id="email" placeholder="E-mail" autocomplete="username" required>
+        <input type="password" id="password" placeholder="Senha" autocomplete="current-password" required>
+        <div class="row"><button class="btn-dark" type="submit">Entrar</button></div>
+        <p class="err" id="loginErr"></p>
+      </form>
+    </section>
+
+    <!-- Painel -->
+    <div id="panel" hidden>
+      <section class="card">
+        <h2>Novo chaveiro</h2>
+        <div class="row">
+          <input type="text" id="label" placeholder="Nome ou código (ex.: Chaveiro 001)" maxlength="60">
+          <button class="btn-dark" id="create">Criar galeria</button>
+        </div>
+        <p class="muted" id="createMsg"></p>
+      </section>
+
+      <section class="card">
+        <h2>Chaveiros cadastrados</h2>
+        <p class="muted" id="summary"></p>
+        <div id="list"></div>
+      </section>
+    </div>
+
+    <p class="err" id="fatal"></p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
